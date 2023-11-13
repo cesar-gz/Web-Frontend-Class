@@ -1,5 +1,8 @@
 open a terminal, install dependencies in package.json
 
+`npm install`
+
+optionally:
 `npm install -g babel-cli`
 `npm install --save-dev babel-core`
 `npm install --save-dev babel-preset-es`
