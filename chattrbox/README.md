@@ -1,22 +1,29 @@
-open a terminal, install dependencies in package.json
+# Set Up
+open a terminal, install dependencies from package.json with command `npm install`
 
-`npm install`
-
-optionally:
+optionally install (if error messages occur):
 `npm install -g babel-cli`
 `npm install --save-dev babel-core`
-`npm install --save-dev babel-preset-es`
+`npm install --save-dev babel-preset-env`
 `npm install --save-dev parcel`
 `npm install --save-dev browserify babelify watchify`
 
 for windows enable scripts with:
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`
-windows users also need to delete a .babelrc file if it populates later, and delete `"main": "index.js",` from the package.json
 
-run `babel app/scripts/src/app.js -o app/scripts/dist/main.js`
+## Starting App
+1) In a terminal, run `npm run build` or `npm run watch`
+2) Run Web Sockets Server by opening another terminal and using the command `npm run dev`
+3) run a localhost on port 5500 or 3000
+4) go to localhost/chattrbox/app/index.html
 
-then run `npx parcel build app/scripts/src/app.js app/scripts/dist/main.js`
+## Chattrbox
+- the ws-client module will manage the WebSockets communication for the client
+- the dom module will display data to the UI and handle form submissions
+- the app module will define the structure of messages and pass messages between ws-client and dom
 
-open a another terminal and `npm run dev` in chattrbox directory
-
-run index.html on a localhost and check the console log to see if there is a printed "Hello ES6" message.
+ws-client.js has four responsibilities:
+• connecting to the server
+• performing initial setup when the connection is first opened
+• forwarding incoming messages to their handlers
+• sending outgoing messages

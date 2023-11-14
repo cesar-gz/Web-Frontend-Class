@@ -9,7 +9,6 @@ var messages = [];
 console.log('Web Sockets Server started on port: ' + port);
 
 ws.on('connection', function (socket) {
-  console.log('Client attempting to connect...');
   console.log('Client connection established.');
 
   messages.forEach(function (msg) {
@@ -20,7 +19,6 @@ ws.on('connection', function (socket) {
   socket.on('message', function (data) {
     console.log('A new message received: ' + data);
     messages.push(data); // this is saving every new message
-
     //socket.send(data);
 
     // send each client the message
