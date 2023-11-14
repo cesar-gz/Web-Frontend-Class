@@ -4,26 +4,25 @@ var port = 3001;
 var ws = new WebSocketServer({
   port: port
 });
+
+console.log('Web Sockets Server started');
 var messages = [];
 
-console.log('Web Sockets Server started on port: ' + port);
-
-ws.on('connection', function (socket) {
-  console.log('Client connection established.');
+ws.on('connection', function(socket) {
+  console.log('client connection established.');
 
   messages.forEach(function (msg) {
-    console.log('Loading Previous messages...');
     socket.send(msg);
   });
 
-  socket.on('message', function (data) {
-    console.log('A new message received: ' + data);
-    messages.push(data); // this is saving every new message
-    //socket.send(data);
-
-    // send each client the message
-    ws.clients.forEach(function (clientSocket) {
-      clientSocket.send(data);
+  socket.on('message', function(data) {
+    console.log('message received: ' + data);
+    messages.push(data);
+    ws.clients.forEach(function(clientSocket) {
+      var obj = JSON.parse(data);
+      var str = JSON.stringify(obj);
+      clientSocket.send(str);
+      // clientSocket.send(data);
     });
   });
 });

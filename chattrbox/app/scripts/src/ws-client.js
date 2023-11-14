@@ -14,14 +14,20 @@ function registerOpenHandler(handlerFunction) {
 
 function registerMessageHandler(handlerFunction) {
   socket.onmessage = (e) => {
-    console.log('message', e.data);
-    let data = JSON.parse(e.data);
-    handlerFunction(data);
+    console.log('ws-client received message', e.data);
+    try {
+      let data = JSON.parse(e.data);
+      handlerFunction(data);
+    } catch(error) {
+      console.error('Error parsing json: ', error);
+    }
   };
 }
 
 function sendMessage(payload) {
-  socket.send(JSON.stringify(payload));
+  let str = JSON.stringify(payload);
+  console.log('ws-client sending stringified message', str);
+  socket.send(str);
 }
 
 export default {
