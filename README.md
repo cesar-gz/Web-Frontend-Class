@@ -14,3 +14,9 @@ Several small projects done in class and at home to practice frontend skills
 * Practice using React framework
 * run `npm install` to install the dependencies
 * then run `npm start`
+
+## gatsby-starter-leaflet
+* cd to gatsby directory
+* run `sudo npm install --global yarn` to get yarn
+* run `yarn add global gatsby-cli`, then `yarn add axios`
+* run `yarn install`, then `yarn start`
