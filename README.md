@@ -1,11 +1,11 @@
-# CPSC 349 California State University Fullerton Frontend Class
+# CPSC 349 Web Front-End Class
 Several small projects done in class and at home to practice frontend skills
 
 ## chattrbox
-* A client application for chat messages
+* A client application for chat messages that uses web hooks
 
 ## coffeerun
-* A shopping-cart style app called CoffeeRun to manage coffee orders for a food truck.
+* A shopping-cart style app with a datastore to manage coffee orders
 
 ## ottergram
 * Project that was used to learn and practice html, css, js basics. Instagram for otters.
@@ -16,7 +16,8 @@ Several small projects done in class and at home to practice frontend skills
 * then run `npm start`
 
 ## gatsby-starter-leaflet
-* cd to gatsby directory
+* a map connected to a API to show stats on Covid-19
+* cd to gatsby directory, you need node version of 18 or higher
 * run `sudo npm install --global yarn` to get yarn
 * run `yarn add global gatsby-cli`, then `yarn add axios`
 * run `yarn install`, then `yarn start`
