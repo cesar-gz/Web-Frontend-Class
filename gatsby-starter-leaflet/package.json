@@ -65,13 +65,31 @@
     "cy:run": "cypress run --headless",
     "cy:verify": "cypress verify",
     "develop": "gatsby develop",
+    "format": "prettier-eslint --eslint-config-path $PWD/config/eslint.config.js --write $PWD/'**/*.js'",
+    "format:nopath": "prettier-eslint --eslint-config-path $PWD/config/eslint.config.js --write",
+    "lint": "eslint -c ./config/eslint.config.js . --ext .js",
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "jest --config ./config/jest.config.js",
     "test:e2e:open": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:run": "start-server-and-test develop http://localhost:8000 cy:run"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "yarn format:nopath",
+      "yarn lint"
+    ]
+  },
   "homepage": "https://gatsby-starter-leaflet.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cesar-gz/Web-Frontend-Class"
+  },
   "bugs": {
     "url": "https://github.com/colbyfayock/gatsby-starter-leaflet/issues"
   }
