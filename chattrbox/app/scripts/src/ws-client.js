@@ -30,9 +30,17 @@ function sendMessage(payload) {
   socket.send(str);
 }
 
+function registerCloseHandler(handlerFunction) {
+  socket.onclose = () => {
+    console.log('socket closed');
+    handlerFunction();
+  };
+}
+
 export default {
   init,
   registerOpenHandler,
   registerMessageHandler,
+  registerCloseHandler,
   sendMessage
 }

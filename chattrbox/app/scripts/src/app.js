@@ -37,6 +37,14 @@ class ChatApp {
       this.chatList.drawMessage(message.toObj());
       //this.chatList.drawMessage(message.serialize());
     });
+    socket.registerCloseHandler(() => {
+      alert('Connection to the server has been closed.');
+      if (window.confirm('Connection lost. Do you want to attempt to reconnect?')) {
+        socket.reconnect('ws://localhost:3001');
+      } else {
+        console.log('Reconnection declined by the user.');
+      }
+    });
   }
 }
 
